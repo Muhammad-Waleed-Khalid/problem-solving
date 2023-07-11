@@ -18,9 +18,7 @@ class Solution:
         i = l - 1
         while i>=0:
             j = random.randint(0,200000) % l
-            temp = shuffled[i]
-            shuffled[i] = shuffled[j]
-            shuffled[j] = temp
+            shuffled[i],shuffled[j] = shuffled[j],shuffled[i]
             l -= 1
             i -= 1
 
