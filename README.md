@@ -85,6 +85,13 @@ Make sure we make changes to the original array.
 <tr> <td> 11 </td><td> 9  </td><td> 40</td><td>1 </td><td>  10 </td><td> 20 </td><td> 0  </td><td> 59 </td><td> 86 </td><td> 32 </td></tr>
 </table>
 
+**After Rotation from Original if N= -2**
+<table border=1>
+<tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
+<tr> <td>20 </td><td> 0  </td><td> 59 </td><td> 86 </td><td> 32 </td><td> 11 </td><td> 9  </td><td> 40</td><td>1 </td><td>  10 </td></tr>
+</table>
+
+
 
 
 
