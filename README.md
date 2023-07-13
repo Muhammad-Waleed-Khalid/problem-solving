@@ -17,6 +17,16 @@ Top Problems must be revised before interview
   **Time Complexity :** O(*log*n)  
   **Space Complexity :** O(1) (iterative Solution), O(*log*n) recursive Solution
   #### Iterative Solution
+  1. first initialize two variables (low,high) with 0 and length of array
+  2. start a loop which ends when low becomes equal or greater than high
+     1. initialize a variable mid which will be the mid value of low and high, you can get using (low+mid)/2 but a better way to avoid overflow or underflow we should low + (high-low)/2
+     2. than check if nums[mid] is equal to our target value 
+     3. [true] return with the mid index
+     4. [false]else if than check if nums[mid] is greater than target
+     5. [true] set high variable with mid -1
+     6. [false] else if than check if nums[mid] is smaller than target
+     7. [true] set low variable with mid + 1
+  3. return -1 index  ***it means element is not present in array***  
   ```
     def binary_search(nums, target):
 	    low = 0
