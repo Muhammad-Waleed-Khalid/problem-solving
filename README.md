@@ -115,9 +115,9 @@ Top Problems must be revised before interview
             return binary_search_rec(nums,target, mid+1, low)
   ```
 #### Time Complexity
-O(*log*n) where n is the length of array
+    O(*log*n) where n is the length of array
 #### Space Complexity
-O(*log*n) recursive stack space is used
+    O(*log*n) recursive stack space is used
 ### Rotate An Array By N Elements
 #### Problem Statement
 We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:  
@@ -182,9 +182,9 @@ def rotate_array(nums, n):
 	return nums
 ```
 #### Time Complexity
-O(n) where n is length of array
+    O(n) where n is length of array
 #### Space Complexity
-O(1) no extra space is used
+    O(1) no extra space is used
 
 ### Rotated Binary Search
 
@@ -246,9 +246,9 @@ def binary_search_rotated(nums, target):
     return -1
 ``` 
 #### Time Complexity
-O(logn) where n is length of array
+    O(logn) where n is length of array
 #### Space Complexity
-O(1) no extra space is used
+    O(1) no extra space is used
 
 ### Smallest Common Number Between Three Arrays
 
@@ -288,9 +288,9 @@ def find_least_common_number(a, b, c):
 ```
 
 #### Time Complexity
-O(n) where n is length of array
+    O(n) where n is length of array
 #### Space Complexity
-O(1) no extra space is used
+    O(1) no extra space is used
 
 
 ### Find Low and High Index of a key in sorted array
