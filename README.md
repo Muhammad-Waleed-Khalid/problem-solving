@@ -90,7 +90,7 @@ Top Problems must be revised before interview
     			low = mid + 1
     	return -1
   ```
-  #### Time Complexity
+#### Time Complexity
     O(*log*n) where n is the length of array
  #### Space Complexity
     O(1) no extra space is used
@@ -102,7 +102,7 @@ Top Problems must be revised before interview
   4. [true] **HURRAH!** (we found the element in array) return mid
   5. [False] check if nums[mid] smaller to target
   ##### Code
-  ~~~
+  ```
     def binary_search_rec(nums,target,low, high):
         if low>=high:
             return -1
@@ -113,12 +113,11 @@ Top Problems must be revised before interview
             return binary_search_rec(nums,target, low, mid-1)
         else:
             return binary_search_rec(nums,target, mid+1, low)
-  ~~~
-
+  ```
 #### Time Complexity
-    O(*log*n) where n is the length of array
+O(*log*n) where n is the length of array
 #### Space Complexity
-    O(*log*n) recursive stack space is used
+O(*log*n) recursive stack space is used
 ### Rotate An Array By N Elements
 #### Problem Statement
 We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:  
