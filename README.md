@@ -47,7 +47,11 @@ Top Problems must be revised before interview
   ```
   #### Recursive Solution
   
-
+  1. check base case (low is greater or equal to high)  if true return -1 // it means target is not present in array
+  2. calculate mid index of low and high use **mid = low+high/2** or **mid = low+(high-low)/2**
+  3. check if nums[mid] equal to target
+  4. [true] **HURRAH!** (we found the element in array) return mid
+  5. [False] check if nums[mid] smaller to target
   ##### Code
   ~~~
     def binary_search_rec(nums,target,low, high):
@@ -62,6 +66,28 @@ Top Problems must be revised before interview
             return binary_search_rec(nums,target, mid+1, low)
   ~~~
 ### Rotate An Array By N Elements
+#### Problem Statement
+We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:  
+  
+- For positive values of n, perform a right rotation.
+- For negative values of n, perform a left rotation.
+Make sure we make changes to the original array.
+#### Example 
+**Original Array**
+<table border=1>
+<tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
+<tr> <td>1 </td><td>  10 </td><td> 20 </td><td> 0  </td><td> 59 </td><td> 86 </td><td> 32 </td><td> 11 </td><td> 9  </td><td> 40</td></tr>
+</table>
+
+**After Rotation if N=3**
+<table border=1>
+<tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
+<tr> <td> 11 </td><td> 9  </td><td> 40</td><td>1 </td><td>  10 </td><td> 20 </td><td> 0  </td><td> 59 </td><td> 86 </td><td> 32 </td></tr>
+</table>
+
+
+
+
 ### Rotated Binary Search
 ### Smallest Common Number Between Three Arrays
 ### Find Low and High Index of a key in sorted array
