@@ -10,6 +10,7 @@ Top Problems must be revised before interview
     - [Rotate An Array By N Elements](#rotate-an-array-by-n-elements)
       - [Problem Statement](#problem-statement)
       - [Example](#example)
+      - [Solution](#solution)
     - [Rotated Binary Search](#rotated-binary-search)
     - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
     - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
@@ -125,7 +126,32 @@ n = 2
 [0, 4 ,2, 13, 15, 1] 
 ```
 
+#### Solution
+ 1. Write a function to reverse Array from a index to b index
+ 2. get length of array ```l```
+ 3. normalize ```N``` by taking modulus by length ```N=N%l```
+ 4. reverse array nums from 0 index to l-1  complete reverse
+ 5. reverse array nums from 0 index to n-1
+ 6. reverse array nums from n index to l-1
+ 7. return nums
 
+```
+    
+def rotate_array(nums, n):
+	def reverse_array(nums, s,e):
+		while(s<e):
+			nums[s],nums[e] = nums[e],nums[s]
+			s+=1
+			e-=1
+		return nums
+
+	l = len(nums)
+	n = n%l
+	nums = reverse_array(nums,0,l-1)
+	nums = reverse_array(nums,0,n-1)
+	nums = reverse_array(nums,n,l-1)
+	return nums
+```
 
 ### Rotated Binary Search
 ### Smallest Common Number Between Three Arrays
