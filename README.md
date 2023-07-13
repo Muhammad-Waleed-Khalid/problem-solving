@@ -14,7 +14,23 @@ Top Problems must be revised before interview
 ## Array 
 ### Binary Search On Sorted Array
   Binary Search is the most efficient way to search in Sorted array.  
-  **Time Complexity :** O(*log*n) 
+  **Time Complexity :** O(*log*n)  
+  **Space Complexity :** O(1) (iterative Solution), O(*log*n) recursive Solution
+  #### Iterative Solution
+  ```
+    function binary_search(array, key)
+        low = 0
+        high = array.length
+        while low < high
+            mid = low + (high - low)/2
+            if array[mid] == key
+                return mid
+            if array[mid] < key
+                high = mid-1
+            else if array[mid] > key
+                low = mid +1
+        return -1
+  ```
 ### Rotate An Array By N Elements
 ### Rotated Binary Search
 ### Smallest Common Number Between Three Arrays
