@@ -8,17 +8,13 @@ def binary_search_rotated(nums, target):
     mid = low + (high-low)//2
     if target == nums[mid]:
       return mid
-    elif target == nums[high]:
-      return high
-    elif target == nums[low]:
-      return low
     if nums[low] <= nums[mid]:
       if target < nums[mid] and target >= nums[low]:
         high = mid - 1
       else:
         low = mid + 1
     else:
-      if target < nums[mid] and target <= nums[end]:
+      if target < nums[mid] and target <= nums[high]:
         low = mid - 1
       else:
         high = mid + 1

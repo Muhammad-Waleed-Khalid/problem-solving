@@ -7,6 +7,8 @@ Top Problems must be revised before interview
   - [Binary Search On Sorted Array](#binary-search-on-sorted-array)
     - [Iterative Solution Of Binary Search](#iterative-solution-of-binary-search)
       - [Code](#code)
+    - [Time Complexity](#time-complexity)
+    - [Space Complexity](#space-complexity)
     - [Recursive Solution of Binary Search](#recursive-solution-of-binary-search)
       - [Code](#code-1)
   - [Rotate An Array By N Elements](#rotate-an-array-by-n-elements)
@@ -14,13 +16,24 @@ Top Problems must be revised before interview
     - [Example](#example)
     - [Solution](#solution)
     - [Code](#code-2)
+    - [Time Complexity](#time-complexity-1)
+    - [Space Complexity](#space-complexity-1)
   - [Rotated Binary Search](#rotated-binary-search)
     - [Problem Statement](#problem-statement-1)
     - [Example](#example-1)
     - [Sample Input](#sample-input)
     - [Expected Output](#expected-output)
     - [Solution](#solution-1)
+    - [Code](#code-3)
+    - [Time Complexity](#time-complexity-2)
+    - [Space Complexity](#space-complexity-2)
   - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
+    - [Problem Statement](#problem-statement-2)
+    - [Example](#example-2)
+    - [Solution](#solution-2)
+    - [Code](#code-4)
+    - [Time Complexity](#time-complexity-3)
+    - [Space Complexity](#space-complexity-3)
   - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
   - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
   - [Best Time to Buy and Sell Stock to Maximize Profit](#best-time-to-buy-and-sell-stock-to-maximize-profit)
@@ -59,8 +72,6 @@ Top Problems must be revised before interview
      6. [false] else if than check if nums[mid] is smaller than target
      7. [true] set low variable with mid + 1
   3. return -1 index  ***it means element is not present in array***  
-
-  **Time Complexity : O(*log*n), Space Complexity : O(1)**
   
   ##### Code
   ```
@@ -77,6 +88,10 @@ Top Problems must be revised before interview
     			low = mid + 1
     	return -1
   ```
+  #### Time Complexity
+    O(*log*n) where n is the length of array
+ #### Space Complexity
+    O(1) no extra space is used
   #### Recursive Solution of Binary Search
   
   1. check base case (low is greater or equal to high)  if true return -1 // it means target is not present in array
@@ -97,6 +112,10 @@ Top Problems must be revised before interview
         else:
             return binary_search_rec(nums,target, mid+1, low)
   ~~~
+    #### Time Complexity
+        O(*log*n) where n is the length of array
+    #### Space Complexity
+        O(*log*n) recursive stack space is used
 ### Rotate An Array By N Elements
 #### Problem Statement
 We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:  
@@ -160,6 +179,10 @@ def rotate_array(nums, n):
 	nums = reverse_array(nums,n,l-1)
 	return nums
 ```
+#### Time Complexity
+O(n) where n is length of array
+#### Space Complexity
+O(1) no extra space is used
 
 ### Rotated Binary Search
 
@@ -184,14 +207,90 @@ key = 20
 ```
 
 #### Solution
- 1. find pivot index using binary search
- 2. if pivot index is -1 then array is not rotated
- 3. if pivot index is 0 then array is rotated by 0
- 4. if key is greater than first element then search in 0 to pivot index
- 5. else search in pivot index to end of array
- 6. return index of key
+ 1. initialize low = 0 and high = length of array -1
+ 2. if low is greater than high return -1
+ 3. start loop till low is less than or equal to high
+    1. initialize mid = low + (high-low)/2 we can also do mid = (low+high)/2 but this can cause overflow
+    2. check if array[mid] is equal to key if yes return mid
+    3. else check id array[low] is less than or equal to array[mid] if yes then
+        1. check if key is greater than array[low] and key is less than array[mid] if yes then  set high = mid-1
+        2. else set low = mid+1
+    4. else
+        1. check if key is greater than array[mid] and key is less than array[high] if yes then set low = mid+1
+        2. else set high = mid-1
+ 4. return -1
+
+#### Code
+```
+def binary_search_rotated(nums, target):
+    low = 0
+    high = len(nums)-1
+    if low>=high:
+        return -1
+    while low < high:
+        mid = low + (high-low)//2
+        if target == nums[mid]:
+        return mid
+        if nums[low] <= nums[mid]:
+        if target < nums[mid] and target >= nums[low]:
+            high = mid - 1
+        else:
+            low = mid + 1
+        else:
+        if target < nums[mid] and target <= nums[high]:
+            low = mid - 1
+        else:
+            high = mid + 1
+    return -1
+``` 
+#### Time Complexity
+O(logn) where n is length of array
+#### Space Complexity
+O(1) no extra space is used
 
 ### Smallest Common Number Between Three Arrays
+
+#### Problem Statement
+Given three integer arrays sorted in ascending order, find the smallest number that is common in all three arrays. For example, let's look at the below three arrays. Here 6 is the smallest number that's common in all the arrays.
+
+#### Example
+```
+Input: [6, 7, 10, 25, 30, 63, 64], [0, 4, 5, 6, 7, 8, 50], [1, 6, 10, 14]
+Output: 6
+```
+
+#### Solution
+    1. initialize i=0, j=0, k=0
+    2. start loop till i is less than length of array1 and j is less than length of array2 and k is less than length of array3
+        1. check if array1[i] is equal to array2[j] and array2[j] is equal to array3[k] if yes then return array1[i]
+        2. else check if array1[i] is less than array2[j] and array1[i] is less than array3[k] if yes then increment i
+        3. else check if array2[j] is less than array1[i] and array2[j] is less than array3[k] if yes then increment j
+        4. else increment k
+    3. return -1
+#### Code
+```
+def find_least_common_number(a, b, c):
+    i = 0
+    j = 0
+    k = 0
+    while i < len(a) and j < len(b) and k < len(c):
+        if a[i] == b[j] and b[j] == c[k]:
+            return a[i]
+        elif a[i] <= b[j] and a[i] <= c[k]:
+            i += 1
+        elif b[j] <= a[i] and b[j] <= c[k]:
+            j += 1
+        elif c[k] <= a[i] and c[k] <= b[j]:
+            k += 1
+    return -1
+```
+#### Time Complexity
+O(n) where n is length of array
+#### Space Complexity
+O(1) no extra space is used
+
+
+
 ### Find Low and High Index of a key in sorted array
 ### Move all Zeros to the beging of the Array
 ### Best Time to Buy and Sell Stock to Maximize Profit
