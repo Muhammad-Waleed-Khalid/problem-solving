@@ -1,4 +1,13 @@
 # problem-solving
 Top Problems must be revised before interview
-
-## [Array] (./array/00.Array.md) 
+- [Array](Array)
+- Linked List
+- Math & Stats
+- Strings
+- Trees
+- Stack & Queues
+- Graph
+- Back Tracking
+- Dynamic Programming
+- Miscellaneous
+## Array
