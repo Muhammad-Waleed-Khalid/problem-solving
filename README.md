@@ -13,7 +13,7 @@ Top Problems must be revised before interview
 
 ## Array 
 ### Binary Search On Sorted Array
-  Binary Search is the most efficient way to search in Sorted array.
+  Binary Search is the most efficient way to search in Sorted array.  
   **Time Complexity :** O(*log*n) 
 ### Rotate An Array By N Elements
 ### Rotated Binary Search
