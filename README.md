@@ -18,18 +18,18 @@ Top Problems must be revised before interview
   **Space Complexity :** O(1) (iterative Solution), O(*log*n) recursive Solution
   #### Iterative Solution
   ```
-    function binary_search(array, key)
-        low = 0
-        high = array.length
-        while low < high
-            mid = low + (high - low)/2
-            if array[mid] == key
-                return mid
-            if array[mid] < key
-                high = mid-1
-            else if array[mid] > key
-                low = mid +1
-        return -1
+    def binary_search(nums, target):
+	    low = 0
+	    high = len(nums) - 1
+	    while low <= high:
+    		mid = low + ((high - low) // 2)
+    		if nums[mid] == target:
+    			return mid
+    		elif target < nums[mid]:
+    			high = mid - 1
+    		elif target > nums[mid]:
+    			low = mid + 1
+    	return -1
   ```
 ### Rotate An Array By N Elements
 ### Rotated Binary Search
