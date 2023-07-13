@@ -12,6 +12,23 @@ Top Problems must be revised before interview
 - [Miscellaneous](README.md#Miscellaneous)
 
 ## Array 
+### Binary Search On Sorted Array
+  Binary Search is the most efficient way to search in Sorted array
+### Rotate An Array By N Elements
+### Rotated Binary Search
+### Smallest Common Number Between Three Arrays
+### Find Low and High Index of a key in sorted array
+### Move all Zeros to the beging of the Array
+1. Best Time to Buy and Sell Stock to Maximize Profit
+1. Merge An Array with Overlapping Intervals
+1. Find Pair With Given Sum in Array
+1. Squares Of a Sorted Array
+1. Container With Most Water
+1. Quick Sort Algorithm
+1. Sort Colors
+1. Arrange The Largest Number
+1. Shuffle An Array
+1. First Missing Positive Integer
 ## Linked-List
 ## Math-&-Stats
 ## Strings
