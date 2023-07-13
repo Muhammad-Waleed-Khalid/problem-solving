@@ -11,6 +11,7 @@ Top Problems must be revised before interview
       - [Problem Statement](#problem-statement)
       - [Example](#example)
       - [Solution](#solution)
+      - [Code](#code-2)
     - [Rotated Binary Search](#rotated-binary-search)
     - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
     - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
@@ -135,8 +136,8 @@ n = 2
  6. reverse array nums from n index to l-1
  7. return nums
 
-```
-    
+#### Code
+```    
 def rotate_array(nums, n):
 	def reverse_array(nums, s,e):
 		while(s<e):
