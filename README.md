@@ -164,7 +164,7 @@ We’re given a sorted integer array, ```array``` and an integer value, ```key``
 #### Example
 <table border=1>
 <tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
-<tr> <span bg-color=red><td>13 </td><td>  14 </td><td> 20 </td></span><td> 0  </td><td> 2 </td><td> 3 </td><td> 5 </td><td> 7 </td><td> 8  </td><td> 11</td></tr>
+<tr> <td class='red'>13 </td><td class='red'>  14 </td><td class='red'> 20 </td></span><td> 0  </td><td> 2 </td><td> 3 </td><td> 5 </td><td> 7 </td><td> 8  </td><td> 11</td></tr>
 </table>
 
 ### Smallest Common Number Between Three Arrays
@@ -189,3 +189,10 @@ We’re given a sorted integer array, ```array``` and an integer value, ```key``
 ## Back-Tracking
 ## Dynamic-Programming
 ## Miscellaneous
+
+
+<style>
+    .red{
+        background-color:red;
+    }
+</style>
