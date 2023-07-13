@@ -1,6 +1,6 @@
 # problem-solving
 Top Problems must be revised before interview
-- [Array](Array)
+- [Array](README.md#array)
 - Linked List
 - Math & Stats
 - Strings
@@ -10,4 +10,7 @@ Top Problems must be revised before interview
 - Back Tracking
 - Dynamic Programming
 - Miscellaneous
-## Array
+
+## Array 
+## Linked List
+### Math & Stats
