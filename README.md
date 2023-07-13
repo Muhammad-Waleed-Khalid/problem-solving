@@ -1,22 +1,45 @@
 # problem-solving
 Top Problems must be revised before interview
-- [Array](README.md#Array)
-- [Linked List](README.md#Linked-List)
-- [Math & Stats](README.md#Math-&-Stats)
-- [Strings](README.md#Strings)
-- [Trees](README.md#Trees)
-- [Stack & Queues](README.md#Stack-&-Queues)
-- [Graph](README.md#Graph)
-- [Back Tracking](README.md#Back-Tracking)
-- [Dynamic Programming](README.md#Dynamic-Programming)
-- [Miscellaneous](README.md#Miscellaneous)
+- [problem-solving](#problem-solving)
+  - [Array](#array)
+    - [Binary Search On Sorted Array](#binary-search-on-sorted-array)
+      - [Iterative Solution Of Binary Search](#iterative-solution-of-binary-search)
+        - [Code](#code)
+      - [Recursive Solution of Binary Search](#recursive-solution-of-binary-search)
+        - [Code](#code-1)
+    - [Rotate An Array By N Elements](#rotate-an-array-by-n-elements)
+      - [Problem Statement](#problem-statement)
+      - [Example](#example)
+    - [Rotated Binary Search](#rotated-binary-search)
+    - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
+    - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
+    - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
+    - [Best Time to Buy and Sell Stock to Maximize Profit](#best-time-to-buy-and-sell-stock-to-maximize-profit)
+    - [Merge An Array with Overlapping Intervals](#merge-an-array-with-overlapping-intervals)
+    - [Find Pair With Given Sum in Array](#find-pair-with-given-sum-in-array)
+    - [Squares Of a Sorted Array](#squares-of-a-sorted-array)
+    - [Container With Most Water](#container-with-most-water)
+    - [Quick Sort Algorithm](#quick-sort-algorithm)
+    - [Sort Colors](#sort-colors)
+    - [Arrange The Largest Number](#arrange-the-largest-number)
+    - [Shuffle An Array](#shuffle-an-array)
+    - [First Missing Positive Integer](#first-missing-positive-integer)
+  - [Linked-List](#linked-list)
+  - [Math-\&-Stats](#math--stats)
+  - [Strings](#strings)
+  - [Trees](#trees)
+  - [Stack-\&-Queues](#stack--queues)
+  - [Graph](#graph)
+  - [Back-Tracking](#back-tracking)
+  - [Dynamic-Programming](#dynamic-programming)
+  - [Miscellaneous](#miscellaneous)
 
 ## Array 
 ### Binary Search On Sorted Array
   Binary Search is the most efficient way to search in Sorted array.  
   **Time Complexity :** O(*log*n)  
   **Space Complexity :** O(1) (iterative Solution), O(*log*n) recursive Solution
-  #### Iterative Solution
+  #### Iterative Solution Of Binary Search
   1. first initialize two variables (low,high) with 0 and length of array
   2. start a loop which ends when low becomes equal or greater than high
      1. initialize a variable mid which will be the mid value of low and high, you can get using (low+mid)/2 but a better way to avoid overflow or underflow we should low + (high-low)/2
@@ -45,7 +68,7 @@ Top Problems must be revised before interview
     			low = mid + 1
     	return -1
   ```
-  #### Recursive Solution
+  #### Recursive Solution of Binary Search
   
   1. check base case (low is greater or equal to high)  if true return -1 // it means target is not present in array
   2. calculate mid index of low and high use **mid = low+high/2** or **mid = low+(high-low)/2**
