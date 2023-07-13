@@ -13,6 +13,8 @@ Top Problems must be revised before interview
       - [Solution](#solution)
       - [Code](#code-2)
     - [Rotated Binary Search](#rotated-binary-search)
+      - [Problem Statement](#problem-statement-1)
+      - [Example](#example-1)
     - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
     - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
     - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
@@ -155,6 +157,16 @@ def rotate_array(nums, n):
 ```
 
 ### Rotated Binary Search
+
+#### Problem Statement
+We’re given a sorted integer array, ```array``` and an integer value, ```key```. The array is rotated by some arbitrary number. Search the ```target``` in this array. If the target does not exist then return -1.
+
+#### Example
+<table border=1>
+<tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
+<tr> <span bg-color=red><td>13 </td><td>  14 </td><td> 20 </td></span><td> 0  </td><td> 2 </td><td> 3 </td><td> 5 </td><td> 7 </td><td> 8  </td><td> 11</td></tr>
+</table>
+
 ### Smallest Common Number Between Three Arrays
 ### Find Low and High Index of a key in sorted array
 ### Move all Zeros to the beging of the Array
