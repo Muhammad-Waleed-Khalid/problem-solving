@@ -97,7 +97,7 @@ nums = [2, 13, 15, 1, 0, 4]
 n = 2
 ```
 
-***Expected Output***
+***Expected Output***  
 ```[0, 4 ,2, 13, 15, 1]```
 
 
