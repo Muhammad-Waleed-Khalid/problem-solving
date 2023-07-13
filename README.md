@@ -91,7 +91,14 @@ Make sure we make changes to the original array.
 <tr> <td>20 </td><td> 0  </td><td> 59 </td><td> 86 </td><td> 32 </td><td> 11 </td><td> 9  </td><td> 40</td><td>1 </td><td>  10 </td></tr>
 </table>
 
+***Sample Input***
+```
+nums = [2, 13, 15, 1, 0, 4]
+n = 2
+```
 
+***Expected Output***
+```[0, 4 ,2, 13, 15, 1]```
 
 
 
