@@ -1,6 +1,8 @@
 # problem-solving
 Top Problems must be revised before interview
+## Table of Contents
 - [problem-solving](#problem-solving)
+  - [Table of Contents](#table-of-contents)
   - [Array](#array)
     - [Binary Search On Sorted Array](#binary-search-on-sorted-array)
       - [Iterative Solution Of Binary Search](#iterative-solution-of-binary-search)
@@ -15,6 +17,9 @@ Top Problems must be revised before interview
     - [Rotated Binary Search](#rotated-binary-search)
       - [Problem Statement](#problem-statement-1)
       - [Example](#example-1)
+      - [Sample Input](#sample-input)
+      - [Expected Output](#expected-output)
+      - [Solution](#solution-1)
     - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
     - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
     - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
@@ -166,6 +171,25 @@ We’re given a sorted integer array, ```array``` and an integer value, ```key``
 <tr> <td>0 </td><td>  1 </td><td>  2 </td><td>  3 </td><td>  4 </td><td>  5 </td><td>  6 </td><td>  7 </td><td>  8 </td><td>  9</td></tr>
 <tr> <td>13</td><td>  14</td><td>  20</td><td> 0  </td><td> 2 </td><td> 3 </td><td> 5 </td><td> 7 </td><td> 8  </td><td> 11</td></tr>
 </table>
+
+#### Sample Input
+```
+array = [13, 14, 20, 0, 2, 3, 5, 7, 8, 11]
+key = 20
+```
+
+#### Expected Output
+```
+2
+```
+
+#### Solution
+ 1. find pivot index using binary search
+ 2. if pivot index is -1 then array is not rotated
+ 3. if pivot index is 0 then array is rotated by 0
+ 4. if key is greater than first element then search in 0 to pivot index
+ 5. else search in pivot index to end of array
+ 6. return index of key
 
 ### Smallest Common Number Between Three Arrays
 ### Find Low and High Index of a key in sorted array
