@@ -11,13 +11,15 @@ Top Problems must be revised before interview
     - [Space Complexity](#space-complexity)
     - [Recursive Solution of Binary Search](#recursive-solution-of-binary-search)
       - [Code](#code-1)
+    - [Time Complexity](#time-complexity-1)
+    - [Space Complexity](#space-complexity-1)
   - [Rotate An Array By N Elements](#rotate-an-array-by-n-elements)
     - [Problem Statement](#problem-statement)
     - [Example](#example)
     - [Solution](#solution)
     - [Code](#code-2)
-    - [Time Complexity](#time-complexity-1)
-    - [Space Complexity](#space-complexity-1)
+    - [Time Complexity](#time-complexity-2)
+    - [Space Complexity](#space-complexity-2)
   - [Rotated Binary Search](#rotated-binary-search)
     - [Problem Statement](#problem-statement-1)
     - [Example](#example-1)
@@ -25,15 +27,15 @@ Top Problems must be revised before interview
     - [Expected Output](#expected-output)
     - [Solution](#solution-1)
     - [Code](#code-3)
-    - [Time Complexity](#time-complexity-2)
-    - [Space Complexity](#space-complexity-2)
+    - [Time Complexity](#time-complexity-3)
+    - [Space Complexity](#space-complexity-3)
   - [Smallest Common Number Between Three Arrays](#smallest-common-number-between-three-arrays)
     - [Problem Statement](#problem-statement-2)
     - [Example](#example-2)
     - [Solution](#solution-2)
     - [Code](#code-4)
-    - [Time Complexity](#time-complexity-3)
-    - [Space Complexity](#space-complexity-3)
+    - [Time Complexity](#time-complexity-4)
+    - [Space Complexity](#space-complexity-4)
   - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
   - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
   - [Best Time to Buy and Sell Stock to Maximize Profit](#best-time-to-buy-and-sell-stock-to-maximize-profit)
@@ -112,10 +114,11 @@ Top Problems must be revised before interview
         else:
             return binary_search_rec(nums,target, mid+1, low)
   ~~~
-    #### Time Complexity
-        O(*log*n) where n is the length of array
-    #### Space Complexity
-        O(*log*n) recursive stack space is used
+
+#### Time Complexity
+    O(*log*n) where n is the length of array
+#### Space Complexity
+    O(*log*n) recursive stack space is used
 ### Rotate An Array By N Elements
 #### Problem Statement
 We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:  
@@ -284,11 +287,11 @@ def find_least_common_number(a, b, c):
             k += 1
     return -1
 ```
+
 #### Time Complexity
 O(n) where n is length of array
 #### Space Complexity
 O(1) no extra space is used
-
 
 
 ### Find Low and High Index of a key in sorted array
