@@ -27,6 +27,9 @@ Top Problems must be revised before interview
      6. [false] else if than check if nums[mid] is smaller than target
      7. [true] set low variable with mid + 1
   3. return -1 index  ***it means element is not present in array***  
+
+    **Time Complexity : O(*log*n), Space Complexity : O(1)**
+  ##### Code
   ```
     def binary_search(nums, target):
 	    low = 0
@@ -41,6 +44,24 @@ Top Problems must be revised before interview
     			low = mid + 1
     	return -1
   ```
+  #### Recursive Solution
+  
+
+  ##### Code
+  ~~~
+    def binary_search_rec(nums,target,low, high):
+        if low>=high:
+            return -1
+        mid = low + (high-low)/2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            return binary_search_rec(nums,target, low, mid-1)
+        else:
+            return binary_search_rec(nums,target, mid+1, low)
+    def binary_search(nums,target):
+        binary_search_rec(nums,target,0,len(nums))
+  ~~~
 ### Rotate An Array By N Elements
 ### Rotated Binary Search
 ### Smallest Common Number Between Three Arrays
