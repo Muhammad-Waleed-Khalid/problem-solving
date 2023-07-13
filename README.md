@@ -28,7 +28,8 @@ Top Problems must be revised before interview
      7. [true] set low variable with mid + 1
   3. return -1 index  ***it means element is not present in array***  
 
-    **Time Complexity : O(*log*n), Space Complexity : O(1)**
+  **Time Complexity : O(*log*n), Space Complexity : O(1)**
+  
   ##### Code
   ```
     def binary_search(nums, target):
@@ -59,8 +60,6 @@ Top Problems must be revised before interview
             return binary_search_rec(nums,target, low, mid-1)
         else:
             return binary_search_rec(nums,target, mid+1, low)
-    def binary_search(nums,target):
-        binary_search_rec(nums,target,0,len(nums))
   ~~~
 ### Rotate An Array By N Elements
 ### Rotated Binary Search
