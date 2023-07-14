@@ -1,18 +1,18 @@
 '''Here is the code for finding the first missing positive integer in an array. The time complexity is O(nlogn) and the space complexity is O(1).'''
 def first_missing_positive(nums):
-	nums.sort()
-	i = 0
-	if(nums[-1]<=0):
-		return 1
-	while nums[i]<=0:
-		i+=1
-	j=1
-	while i<len(nums):
-		if nums[i]!=j:
-			return j
-		j+=1
-		i+=1
-	return -1
+    i = 0
+    while i < len(nums):
+        if nums[i] > 0 and nums[i] <= len(nums) and nums[i] != nums[nums[i]-1]:
+            nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1]
+        else:
+            i += 1
+    i = 0
+    while i < len(nums):
+        if nums[i] != i+1:
+            return i+1
+        else:
+            i += 1
+    return len(nums)+1
 
 '''Here is code for finding the first missing positive integer in an array. The time complexity is O(n) and the space complexity is O(1).'''
 def first_missing_positive_without_sorting(nums):

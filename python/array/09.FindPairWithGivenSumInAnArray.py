@@ -1,19 +1,11 @@
 '''Here is the code for finding a pair with a given sum in an array. The time complexity is O(n) and the space complexity is O(n).'''
-def find_sum_of_two(nums, val):
-  hashmap = {}
-  for i in nums:
-    if i in hashmap:
-      hashmap[i] += 1
+def find_sum_of_two(A, val):
+  hash_map = {}
+  for i in range(len(A)):
+    if A[i] in hash_map:
+      return True
     else:
-      hashmap[i] = 1
-  for i in range(len(nums)):
-    target = val - nums[i]
-    count = hashmap.get(target)
-    if count != None:
-      if target == nums[i] and count > 2:
-        return True
-      if target != nums[i]:
-        return True
+      hash_map[val - A[i]] = A[i]
   return False
 
 

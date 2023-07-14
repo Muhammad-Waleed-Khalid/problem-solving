@@ -37,17 +37,83 @@ Top Problems must be revised before interview
     - [Time Complexity](#time-complexity-4)
     - [Space Complexity](#space-complexity-4)
   - [Find Low and High Index of a key in sorted array](#find-low-and-high-index-of-a-key-in-sorted-array)
+    - [Problem Statement](#problem-statement-3)
+    - [Example](#example-3)
+    - [Solution](#solution-3)
+    - [Code](#code-5)
+    - [Time Complexity](#time-complexity-5)
+    - [Space Complexity](#space-complexity-5)
   - [Move all Zeros to the beging of the Array](#move-all-zeros-to-the-beging-of-the-array)
+    - [Problem Statement](#problem-statement-4)
+    - [Example](#example-4)
+    - [Solution](#solution-4)
+    - [Code](#code-6)
+    - [Time Complexity](#time-complexity-6)
+    - [Space Complexity](#space-complexity-6)
   - [Best Time to Buy and Sell Stock to Maximize Profit](#best-time-to-buy-and-sell-stock-to-maximize-profit)
+    - [Problem Statement](#problem-statement-5)
+    - [Example](#example-5)
+    - [Solution](#solution-5)
+    - [Code](#code-7)
+    - [Time Complexity](#time-complexity-7)
+    - [Space Complexity](#space-complexity-7)
   - [Merge An Array with Overlapping Intervals](#merge-an-array-with-overlapping-intervals)
+    - [Problem Statement](#problem-statement-6)
+    - [Example](#example-6)
+    - [Solution](#solution-6)
+    - [Code](#code-8)
+    - [Time Complexity](#time-complexity-8)
+    - [Space Complexity](#space-complexity-8)
   - [Find Pair With Given Sum in Array](#find-pair-with-given-sum-in-array)
+    - [Problem Statement](#problem-statement-7)
+    - [Example](#example-7)
+    - [Solution](#solution-7)
+    - [Code](#code-9)
+    - [Time Complexity](#time-complexity-9)
+    - [Space Complexity](#space-complexity-9)
   - [Squares Of a Sorted Array](#squares-of-a-sorted-array)
+    - [Problem Statement](#problem-statement-8)
+    - [Example](#example-8)
+    - [Solution](#solution-8)
+    - [Code](#code-10)
+    - [Time Complexity](#time-complexity-10)
+    - [Space Complexity](#space-complexity-10)
   - [Container With Most Water](#container-with-most-water)
+    - [Problem Statement](#problem-statement-9)
+    - [Example](#example-9)
+    - [Solution](#solution-9)
+    - [Code](#code-11)
+    - [Time Complexity](#time-complexity-11)
+    - [Space Complexity](#space-complexity-11)
   - [Quick Sort Algorithm](#quick-sort-algorithm)
+    - [Problem Statement](#problem-statement-10)
+    - [Example](#example-10)
+    - [Solution](#solution-10)
+    - [Code](#code-12)
+    - [Time Complexity](#time-complexity-12)
+    - [Space Complexity](#space-complexity-12)
   - [Sort Colors](#sort-colors)
+    - [Problem Statement](#problem-statement-11)
+    - [Example](#example-11)
+    - [Solution](#solution-11)
+    - [Code](#code-13)
+    - [Time Complexity](#time-complexity-13)
+    - [Space Complexity](#space-complexity-13)
   - [Arrange The Largest Number](#arrange-the-largest-number)
+    - [Problem Statement](#problem-statement-12)
+    - [Example](#example-12)
+    - [Solution](#solution-12)
+    - [Code](#code-14)
+    - [Time Complexity](#time-complexity-14)
+    - [Space Complexity](#space-complexity-14)
   - [Shuffle An Array](#shuffle-an-array)
   - [First Missing Positive Integer](#first-missing-positive-integer)
+    - [Problem Statement](#problem-statement-13)
+    - [Example](#example-13)
+    - [Solution](#solution-13)
+    - [Code](#code-15)
+    - [Time Complexity](#time-complexity-15)
+    - [Space Complexity](#space-complexity-15)
 - [Linked-List](#linked-list)
 - [Math-\&-Stats](#math--stats)
 - [Strings](#strings)
@@ -446,14 +512,353 @@ def find_buy_sell_stock_prices(array):
     O(1) no extra space is used
 
 ### Merge An Array with Overlapping Intervals
+
+#### Problem Statement
+Given an array (list) of intervals as input where each interval has a start and end timestamps. Input array is sorted by starting timestamps. You are required to merge overlapping intervals and return output array (list).
+
+#### Example
+```
+Input: [(1, 5), (3, 7), (4, 6), (6, 8), (10, 12), (11, 15)]
+Output: [(1, 8), (10, 15)]
+```
+
+#### Solution
+1. initialize ```merged = []```
+2. start loop from ```1``` till ```length of array```
+    1. check if ```array[i][0] <= merged[-1][1]``` if yes then set ```merged[-1][1] = max(merged[-1][1], array[i][1])```
+    2. else append ```array[i]``` to ```merged```
+3. ```return merged```
+
+#### Code
+```
+def merge_intervals(v):
+  result = [v[0]]
+  j = 1
+  for i in range(1,len(v)):
+    if result[j-1][2] >= v[i][0]:
+      if v[i][1] > result[j-1][1]:
+        result[j-1][1] = v[i][0]
+
+    else:
+      result.append(v[i])
+      j+=1
+  return result
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Find Pair With Given Sum in Array
+
+#### Problem Statement
+Given an unsorted array of integers, find a pair with given sum in it.
+
+#### Example
+```
+Input: [8, 7, 2, 5, 3, 1]
+Sum: 10
+Output: [0, 2] or [1, 4]
+```
+
+#### Solution
+1. initialize ```hash_map = {}```
+2. start loop from ```0``` till ```length of array```
+    1. check if ```array[i] in hash_map``` if yes then ```return True```
+    2. else ```hash_map[sum - array[i]] = i```
+3. ```return False```
+
+#### Code
+```
+def find_sum_of_two(A, val):
+  hash_map = {}
+  for i in range(len(A)):
+    if A[i] in hash_map:
+      return True
+    else:
+      hash_map[val - A[i]] = A[i]
+  return False
+```
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(n) where n is length of array for hash_map
+
 ### Squares Of a Sorted Array
+
+#### Problem Statement
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+#### Example
+```
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+```
+
+#### Solution
+1. initialize ```result = []```
+2. initialize ```left = 0```, ```right = len(array) - 1```
+3. start loop from ```right``` till ```left```
+    1. check if ```abs(array[left]) > abs(array[right])``` if yes then ```result.append(array[left] * array[left])``` and ```left += 1```
+    2. else ```result.append(array[right] * array[right])``` and ```right -= 1```
+4. ```return result[::-1]``` to reverse the array
+
+#### Code
+```
+def sortedSquares(nums):
+  result = []
+  left = 0
+  right = len(nums) - 1
+  while left <= right:
+    if abs(nums[left]) > abs(nums[right]):
+      result.append(nums[left] * nums[left])
+      left += 1
+    else:
+      result.append(nums[right] * nums[right])
+      right -= 1
+  return result[::-1]
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(n) where n is length of array for result
+
 ### Container With Most Water
+
+#### Problem Statement
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+#### Example
+```
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+```
+
+#### Solution
+1. initialize ```left = 0```, ```right = len(array) - 1```
+2. initialize ```max_area = 0```
+3. start loop from ```left``` till ```right```
+    1. check if ```array[left] < array[right]``` if yes then ```max_area = max(max_area, array[left] * (right - left))``` and ```left += 1```
+    2. else ```max_area = max(max_area, array[right] * (right - left))``` and ```right -= 1```
+4. ```return max_area```
+
+#### Code
+```
+def max_water_area_container(height):
+    i = 0
+    j = len(height)-1
+    max_water = 0
+    while(i<j):
+        hi,hj= height[i],height[j]
+        container = min(hi,hj)* (j-i)
+        if max_water < container:
+            max_water = container
+        if hi < hj:
+            i+=1
+        else:
+            j-=1
+    return max_water
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Quick Sort Algorithm
+
+#### Problem Statement
+Given an array of integers, sort the array in ascending order using the Quick Sort algorithm.
+
+#### Example
+```
+Input: [8, 7, 2, 5, 3, 1]
+Output: [1, 2, 3, 5, 7, 8]
+```
+
+#### Solution
+**Partition**
+1. initialize ```pivot_value = array[low]```
+2. initialize ```i = low```, ```j = high```
+3. start loop till ```i < j```
+    1. start loop till ```i <= j and array[i] <= pivot_value``` if yes then ```i += 1```
+    2. start loop till ```array[j] > pivot_value``` if yes then ```j -= 1```
+    3. check if ```i < j``` if yes then ```array[i], array[j] = array[j], array[i]```
+4. ```array[low], array[j] = array[j], pivot_value```
+5. ```return j```
+
+**Quick Sort Helper**
+1. check if ```low < high``` if yes then
+    1. ```pivot_index = partition(array, low, high)```
+    2. ```quick_sort_helper(array, low, pivot_index-1)```
+    3. ```quick_sort_helper(array, pivot_index+1, high)```
+
+**Quick Sort**
+1. ```quick_sort_helper(array, 0, len(array)-1)```
+2. ```return array```
+
+
+
+
+#### Code
+```
+def partition(nums, low, high):
+    pivot_value = nums[low]
+    i = low
+    j = high
+    while i<j:
+        while i <= j and nums[i] <= pivot_value:
+            i += 1
+        while nums[j] > pivot_value:
+            j-=1
+
+        if i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+        
+    nums[low], nums[j] = nums[j], pivot_value
+    
+    return j
+
+def quick_sort_helper(nums, low, high):
+    if low < high:
+        pivot_index = partition(nums, low, high)
+        quick_sort_helper(nums, low, pivot_index-1)
+        quick_sort_helper(nums, pivot_index+1, high)
+
+def quick_sort(nums):
+    quick_sort_helper(nums, 0, len(nums)-1)
+    return nums
+```
+
+#### Time Complexity
+    O(nlogn) where n is length of array
+#### Space Complexity
+    O(logn) where n is length of array for recursion stack
+
 ### Sort Colors
+
+#### Problem Statement
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue. We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+#### Example
+```
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+```
+
+#### Solution
+1. initialize ```low = 0```, ```mid = 0```, ```high = len(array) - 1```
+2. start loop till ```mid <= high```
+    1. check if ```array[mid] == 0``` if yes then ```array[low], array[mid] = array[mid], array[low]``` and ```low += 1```
+    2. check if ```array[mid] == 1``` if yes then ```mid += 1```
+    3. check if ```array[mid] == 2``` if yes then ```array[mid], array[high] = array[high], array[mid]``` and ```high -= 1```
+3. ```return array```
+
+#### Code
+```
+def sort_colors(nums):
+    low = 0
+    mid = 0
+    high = len(nums) - 1
+    while mid <= high:
+        if nums[mid] == 0:
+            nums[low], nums[mid] = nums[mid], nums[low]
+            low += 1
+            mid += 1
+        elif nums[mid] == 1:
+            mid += 1
+        else:
+            nums[mid], nums[high] = nums[high], nums[mid]
+            high -= 1
+    return nums
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Arrange The Largest Number
-### Shuffle An Array
+
+#### Problem Statement
+Given a list of non negative integers, arrange them in such a manner that they form the largest number possible.The result is going to be very large, hence return the result in the form of a string.
+
+#### Example
+```
+Input: [3, 30, 34, 5, 9]
+Output: 9534330
+```
+
+#### Solution
+
+1. initialize ```array = [str(i) for i in array]```
+2. sort the array using ```lambda``` function
+3. ```return ''.join(array)```
+
+#### Code
+```
+class LargerNumKey(str):
+  def __lt__(x,y):
+    return x+y > y+x
+
+def largest_number(nums):
+  mapStr = map(str, nums)
+  mapStr = sorted(mapStr,key=LargerNumKey)
+  largest = ''.join(mapStr)
+  return '0' if largest[0] == '0' else largest
+```
+
+#### Time Complexity
+    O(nlogn) where n is length of array
+#### Space Complexity
+    O(n) where n is length of array for extra space used for storing string
+### Shuffle Array
+
+#### ~~Incomplete~~
+
 ### First Missing Positive Integer
+
+#### Problem Statement
+Given an unsorted integer array nums, find the smallest missing positive integer.
+
+#### Example
+```
+Input: nums = [1,2,0]
+Output: 3
+```
+
+#### Solution
+1. initialize ```i = 0```
+2. start loop till ```i < len(array)```
+    1. check if ```array[i] > 0 and array[i] <= len(array) and array[i] != array[array[i]-1]``` if yes then ```array[array[i]-1], array[i] = array[i], array[array[i]-1]``` else ```i += 1```
+3. start loop till ```i < len(array)```
+    1. check if ```array[i] != i+1``` if yes then ```return i+1``` else ```i += 1```
+4. ```return len(array)+1```
+
+#### Code
+```
+def first_missing_positive(nums):
+    i = 0
+    while i < len(nums):
+        if nums[i] > 0 and nums[i] <= len(nums) and nums[i] != nums[nums[i]-1]:
+            nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1]
+        else:
+            i += 1
+    i = 0
+    while i < len(nums):
+        if nums[i] != i+1:
+            return i+1
+        else:
+            i += 1
+    return len(nums)+1
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
 ## Linked-List
 ## Math-&-Stats
 ## Strings
