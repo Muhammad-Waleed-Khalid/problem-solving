@@ -365,7 +365,86 @@ def find_high_index(arr, key):
     O(1) no extra space is used
 
 ### Move all Zeros to the beging of the Array
+
+#### Problem Statement
+Given an integer array, move all elements containing '0' to the left while maintaining the order of other elements in the array.
+
+#### Example
+```
+Input: [1,10,20,0,59,63,0,88,0]
+Output: [0,0,0,1,10,20,59,63,88]
+```
+#### Solution
+1. initialize ```write_index = length of array -1```
+2. start loop from ```length of array -1``` till ```0```
+    1. check if ```array[i] != 0``` if yes then set ```array[write_index] = array[i]``` and ```write_index -= 1```
+3. start loop from ```write_index``` till ```0``` and set ```array[i] = 0```
+
+#### Code
+```
+def move_zeros_to_left(nums):
+  i = len(nums) - 1
+  j = i
+  while i >= 0:
+    if nums[i]:
+      nums[j]=nums[i]
+      j-=1
+    i-=1
+  while j>=0:
+    nums[j] = 0
+    j-=1
+  return nums
+```
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Best Time to Buy and Sell Stock to Maximize Profit
+
+#### Problem Statement
+Given an array of numbers representing the daily stock prices of a company in chronological order, write a function that calculates the maximum profit you could have made from buying and selling that stock once. You must buy before you can sell it.
+
+#### Example
+```
+Input: [9, 11, 8, 5, 7, 10]
+Output: 5
+```
+#### Solution
+
+1. check if ```array``` is ```None``` or ```length of array < 2``` if yes then ```return None```
+2. initialize ```current_buy = array[0]```, ```global_sell = array[1]```, ```global_profit = global_sell - current_buy```, ```current_profit = float('-inf')```
+3. start loop from ```1``` till ```length of array```
+    1. set ```current_profit = array[i] - current_buy```
+    2. check if ```current_profit > global_profit``` if yes then set ```global_profit = current_profit``` and ```global_sell = array[i]```
+    3. check if ```current_buy > array[i]``` if yes then set ```current_buy = array[i]```
+4. ```return global_sell - global_profit, global_sell```
+
+#### Code
+```
+def find_buy_sell_stock_prices(array):
+    if array == None or len(array) < 2:
+        return None
+    current_buy = array[0]
+    global_sell = array[1]
+    global_profit = global_sell - current_buy
+    current_profit = float('-inf')
+    for i in range(1, len(array)):
+        current_profit = array[i] - current_buy
+        if current_profit > global_profit:
+            global_profit = current_profit
+            global_sell = array[i]
+        if current_buy > array[i]:
+            current_buy = array[i]
+    result = global_sell - global_profit, global_sell
+    return result
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Merge An Array with Overlapping Intervals
 ### Find Pair With Given Sum in Array
 ### Squares Of a Sorted Array
