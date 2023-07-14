@@ -294,6 +294,76 @@ def find_least_common_number(a, b, c):
 
 
 ### Find Low and High Index of a key in sorted array
+
+#### Problem Statement
+Given a sorted array of integers, return the low and high index of the given key. Return -1 if not found. The array length can be in millions with lots of duplicates.
+
+#### Example
+```
+Input: [1, 2, 5, 5, 5, 5, 5, 5, 5, 5, 20]
+Output: 2, 9
+```
+
+#### Solution
+
+**LOW INDEX**
+1. initialize ```low = 0``` and ```high = length of array -1```
+2. initialize ```mid = low + (high-low)/2``` we can also do ```mid = (low+high)/2``` but this can cause overflow
+3. start loop till ```low <= high```
+    1. check if ```array[mid] <=  key``` if yes then set ```low = mid+1```
+    2. else set ```high = mid-1```
+4. check if ```array[low] == key``` and ```low < length of array``` if yes then ```return low``` 
+5. else ```return -1```
+
+**HIGH INDEX**
+1. initialize ```low = 0``` and ```high = length of array -1```
+2. initialize ```mid = low + (high-low)/2``` we can also do ```mid = (low+high)/2``` but this can cause overflow
+3. start loop till ```low <= high```
+    1. check if ```array[mid] == key``` if yes then set ```high = mid-1```
+    2. else set ```low = mid+1```
+4. check if ```array[high]``` is equal to ```key``` if yes then ```return high```
+5. else ```return -1```
+
+#### Code
+```
+def find_low_index(arr, key):
+    low = 0
+    high = len(arr) - 1
+    mid = high // 2
+    while low <= high:
+        mid_elem = arr[mid]
+        if mid_elem < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+        mid = low + (high - low) // 2
+    if low < len(arr) and arr[low] == key:
+        return low
+    return -1
+
+def find_high_index(arr, key):
+    low = 0
+    high = len(arr) - 1
+    mid = high // 2
+    while low <= high:
+        mid_elem = arr[mid]
+        if mid_elem <= key:
+            low = mid + 1
+        else:
+            high = mid - 1
+        mid = low + (high - low) // 2
+    if high == -1:
+        return high
+    if high < len(arr) and arr[high] == key:
+        return high
+    return -1
+```
+
+#### Time Complexity
+    O(logn) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
 ### Move all Zeros to the beging of the Array
 ### Best Time to Buy and Sell Stock to Maximize Profit
 ### Merge An Array with Overlapping Intervals
