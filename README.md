@@ -859,6 +859,53 @@ def first_missing_positive(nums):
     O(n) where n is length of array
 #### Space Complexity
     O(1) no extra space is used
+
+### Minimum Size Subarray Sum
+
+#### Problem Statement
+Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+
+#### Example
+```
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+```
+
+#### Solution
+
+1. initialize ```left = 0```, ```sum1 = 0```, ```result = float('inf')```
+2. start loop till ```i < len(array)```
+    1. ```sum1 += array[i]```
+    2. start loop till ```sum1 >= target```
+        1. ```result = min(result,(i+1) - left)```
+        2. ```sum1 -= array[left]```
+        3. ```left += 1```
+3. check if ```result == float('inf')``` if yes then ```return 0``` else ```return result```
+
+
+#### Code
+```
+def min_sub_array_len(target, nums):
+	left = 0
+	sum1 = 0
+	result = float('inf')
+	for i in range(len(nums)):
+		sum1 += nums[i]
+		while sum1>= target:
+			result = min(result,(i+1) - left)
+			sum1 -= nums[left]
+			left+=1
+	if result == float('inf'):
+		return 0
+	return result
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(1) no extra space is used
+
+
 ## Linked-List
 ## Math-&-Stats
 ## Strings
