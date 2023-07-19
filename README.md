@@ -137,6 +137,22 @@ Top Problems must be revised before interview
     - [Time Complexity](#time-complexity-18)
     - [Space Complexity](#space-complexity-18)
 - [Linked-List](#linked-list)
+  - [Implementation of Single Linked List](#implementation-of-single-linked-list)
+    - [Problem Statement](#problem-statement-17)
+    - [Psuedo Code](#psuedo-code)
+    - [Single Linked List Python Code](#single-linked-list-python-code)
+  - [Reverse a Single Linked List](#reverse-a-single-linked-list)
+    - [Problem Statement](#problem-statement-18)
+    - [Example](#example-17)
+    - [Solution](#solution-17)
+    - [Code](#code-19)
+    - [Time Complexity](#time-complexity-19)
+    - [Space Complexity](#space-complexity-19)
+  - [Remove Duplicate From Linked List](#remove-duplicate-from-linked-list)
+    - [Problem Statement](#problem-statement-19)
+    - [Example](#example-18)
+    - [Solution](#solution-18)
+    - [Code](#code-20)
 - [Math-\&-Stats](#math--stats)
 - [Strings](#strings)
 - [Trees](#trees)
@@ -1022,6 +1038,246 @@ def product_except_self(nums):
     O(n) where n is length of array for left, right and result
 
 ## Linked-List
+
+### Implementation of Single Linked List
+
+#### Problem Statement
+
+#### Psuedo Code
+```psuedo
+class Node
+    private:
+        <variable> data
+        <Pointer Node> next
+    public:
+        <function> constructor(data):
+            mine.data = data
+            mine.next = NULL
+
+class SingleLinkedList
+    private:
+        <Pointer Node> head
+    public:
+        
+        <function> constructor():
+            head = NULL
+        
+        
+        <function> constructor(<variable> data):
+            head = Node(data)
+        
+        <function> constructor(<Pointer Node> head):
+            <Pointer Node> ptr = head
+            mine.head = NULL
+            while ptr != NULL:
+                mine.insert_at_tail(ptr.data)
+                ptr = ptr.next
+
+        <function> insert_at_head(<variable> data):
+            <Pointer Node> new_node = Node(data)
+            if head == NULL:
+                head = new_node
+            else:
+                new_node.next = head
+                head = new_node    
+
+        <function> insert_at_tail(<variable> data):
+            <Pointer Node> new_node = Node(data)
+            if head == NULL:
+                head = new_node
+            else:
+                <Pointer Node> ptr = head
+                while ptr.next != NULL:
+                    ptr = ptr.next
+                ptr.next = new_node
+
+        <function> insert_at_position(<variable> data, <variable> position):
+            <Pointer Node> new_node = Node(data)
+            if head == NULL:
+                head = new_node
+            else:
+                <Pointer Node> ptr = head
+                <Pointer Node> prev = NULL
+                <variable> count = 0
+                while ptr != NULL and count < position:
+                    prev = ptr
+                    ptr = ptr.next
+                    count += 1
+                prev.next = new_node
+                new_node.next = ptr
+        
+        <function> delete_at_head():
+            if head == NULL:
+                return
+            else:
+                <Pointer Node> ptr = head
+                head = head.next
+                ptr.next = NULL
+                delete ptr
+
+        <function> delete_at_tail():
+            if head == NULL:
+                return
+            else:
+                <Pointer Node> ptr = head
+                <Pointer Node> prev = NULL
+                while ptr.next != NULL:
+                    prev = ptr
+                    ptr = ptr.next
+                prev.next = NULL
+                delete ptr
+
+        <function> delete_at_position(<variable> position):
+            if head == NULL:
+                return
+            else:
+                <Pointer Node> ptr = head
+                <Pointer Node> prev = NULL
+                <variable> count = 0
+                while ptr != NULL and count < position:
+                    prev = ptr
+                    ptr = ptr.next
+                    count += 1
+                prev.next = ptr.next
+                ptr.next = NULL
+                delete ptr
+        
+        <function> delete_by_value(<variable> data):
+            if head == NULL:
+                return
+            else:
+                <Pointer Node> ptr = head
+                <Pointer Node> prev = NULL
+                while ptr != NULL and ptr.data != data:
+                    prev = ptr
+                    ptr = ptr.next
+                if ptr == NULL:
+                    return
+                else:
+                    prev.next = ptr.next
+                    ptr.next = NULL
+                    delete ptr  
+        
+
+        <function> search(<variable> data):
+            if head == NULL:
+                return False
+            else:
+                <Pointer Node> ptr = head
+                while ptr != NULL and ptr.data != data:
+                    ptr = ptr.next
+                if ptr == NULL:
+                    return False
+                else:
+                    return True
+```
+#### [Single Linked List Python Code](./python/linked-list/SLL.py)
+
+### Reverse a Single Linked List
+
+#### Problem Statement
+Given a singly linked list, write a function to reverse the linked list.
+
+#### Example
+```
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+```
+
+#### Solution
+1. initialize ```prev = NULL```, ```curr = head```, ```next = NULL```
+2. start loop till ```curr != NULL```
+    1. ```next = curr.next```
+    2. ```curr.next = prev```
+    3. ```prev = curr```
+    4. ```curr = next```
+3. ```head = prev```
+4. return ```head```
+
+#### Code
+
+```python
+def reverseLinkedList(head):
+    if head is None or head.next is None:
+        return head
+
+    prev = None
+    curr = head
+    next = None
+
+    while curr is not None:
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    head = prev
+    return head
+```
+
+```cpp
+Node* reverseLinkedList(Node* head){
+    if (head == NULL || head->next == NULL)
+        return head;
+    
+    Node *prev = NULL;
+    Node *curr = head;
+    Node *next = NULL;
+
+    while(curr != NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+    return head;
+}
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Remove Duplicate From Linked List
+
+#### Problem Statement
+Given a linked list, delete all duplicates such that each element appear only once. **Linked List can be unSorted**
+
+#### Example
+```
+Input: 1->2->3->3->2->1->NULL
+Output: 1->2->3->NULL
+```
+
+#### Solution
+1. initialize ```ptr = head```
+2. initialize ```hash_set = set()```
+3. add ```ptr.data``` to ```hash_set```
+4. while ```ptr.next != NULL```
+    1. check if ```ptr.next.data in hash_set``` if yes then ```ptr.next = ptr.next.next```
+    2. else ```hash_set.add(ptr.next.data)``` and ```ptr = ptr.next```
+5. return ```head```
+
+#### Code
+
+```python
+def removeDuplicates(head):
+    if head is None or head.next is None:
+        return head
+    
+    curr = head
+    hashset = set()
+    hashset.add(curr.data)
+    while curr.next is not None:
+        if curr.next.data in hashset:
+            curr.next = curr.next.next
+        else:
+            hashset.add(curr.next.data)
+            curr = curr.next
+    return head
+```
+
 ## Math-&-Stats
 ## Strings
 ## Trees

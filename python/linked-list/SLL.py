@@ -11,7 +11,7 @@ class LinkedList:
         self.head = None
         self.length = 0
         for value in values:
-            self.insert_node_at_tail(value)
+            self.insert_at_tail(value)
     
     # Insert node at head
     def insert_at_head(self, value):
