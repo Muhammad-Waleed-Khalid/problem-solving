@@ -129,6 +129,13 @@ Top Problems must be revised before interview
     - [Code](#code-17)
     - [Time Complexity](#time-complexity-17)
     - [Space Complexity](#space-complexity-17)
+  - [Product of All Elements Except Itself in an Array](#product-of-all-elements-except-itself-in-an-array)
+    - [Problem Statement](#problem-statement-16)
+    - [Example](#example-16)
+    - [Solution](#solution-16)
+    - [Code](#code-18)
+    - [Time Complexity](#time-complexity-18)
+    - [Space Complexity](#space-complexity-18)
 - [Linked-List](#linked-list)
 - [Math-\&-Stats](#math--stats)
 - [Strings](#strings)
@@ -970,6 +977,49 @@ def next_greater_element(nums1, nums2):
 #### Space Complexity
     O(n) where n is length of array for stack and hash_map
 
+### Product of All Elements Except Itself in an Array
+
+#### Problem Statement
+Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
+
+#### Example
+```
+Input: [1, 2, 3, 4, 5]
+Output: [120, 60, 40, 30, 24]
+```
+
+#### Solution
+
+1. initialize ```result = [1] * len(array)```
+2. initialize ```left = [1] * len(array)```
+3. initialize ```right = [1] * len(array)```
+4. start loop from ```1``` till ```length of array```
+    1. ```left[i] = left[i-1] * array[i-1]```
+5. start loop from ```length of array - 2``` till ```-1```
+    1. ```right[i] = right[i+1] * array[i+1]```
+6. start loop from ```0``` till ```length of array```
+    1. ```result[i] = left[i] * right[i]```
+7. return ```result```
+
+#### Code
+```
+def product_except_self(nums):
+    result = [1] * len(nums)
+    left = [1] * len(nums)
+    right = [1] * len(nums)
+    for i in range(1, len(nums)):
+        left[i] = left[i-1] * nums[i-1]
+    for i in range(len(nums)-2, -1, -1):
+        right[i] = right[i+1] * nums[i+1]
+    for i in range(len(nums)):
+        result[i] = left[i] * right[i]
+    return result
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity    
+    O(n) where n is length of array for left, right and result
 
 ## Linked-List
 ## Math-&-Stats
