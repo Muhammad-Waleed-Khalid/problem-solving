@@ -106,7 +106,8 @@ Top Problems must be revised before interview
     - [Code](#code-14)
     - [Time Complexity](#time-complexity-14)
     - [Space Complexity](#space-complexity-14)
-  - [Shuffle An Array](#shuffle-an-array)
+  - [Shuffle Array](#shuffle-array)
+    - [~~Incomplete~~](#incomplete)
   - [First Missing Positive Integer](#first-missing-positive-integer)
     - [Problem Statement](#problem-statement-13)
     - [Example](#example-13)
@@ -114,6 +115,20 @@ Top Problems must be revised before interview
     - [Code](#code-15)
     - [Time Complexity](#time-complexity-15)
     - [Space Complexity](#space-complexity-15)
+  - [Minimum Size Subarray Sum](#minimum-size-subarray-sum)
+    - [Problem Statement](#problem-statement-14)
+    - [Example](#example-14)
+    - [Solution](#solution-14)
+    - [Code](#code-16)
+    - [Time Complexity](#time-complexity-16)
+    - [Space Complexity](#space-complexity-16)
+  - [Next Element Greater Than Subset](#next-element-greater-than-subset)
+    - [Problem Statement](#problem-statement-15)
+    - [Example](#example-15)
+    - [Solution](#solution-15)
+    - [Code](#code-17)
+    - [Time Complexity](#time-complexity-17)
+    - [Space Complexity](#space-complexity-17)
 - [Linked-List](#linked-list)
 - [Math-\&-Stats](#math--stats)
 - [Strings](#strings)
@@ -904,6 +919,56 @@ def min_sub_array_len(target, nums):
     O(n) where n is length of array
 #### Space Complexity
     O(1) no extra space is used
+
+
+### Next Element Greater Than Subset
+
+#### Problem Statement
+
+Given an array, find the next greater element G[i] for every element A[i] in the array. The Next greater Element for an element A[i] is the first greater element on the right side of A[i] in array. More formally,
+
+#### Example
+**Input**
+```
+    nums1 = [4,1,2]
+    nums2 = [1,3,4,2].
+```
+**Output**
+```
+    [-1, 3, -1]
+```
+
+#### Solution
+1. initialize ```stack = []```
+2. initialize ```hash_map = {}```
+3. start loop from ```0``` till ```length of array2```
+   1. check if ```stack is not empty and array2[i] > stack[-1]``` if yes then ```hash_map[stack.pop()] = array2[i]```
+   2. append ```array2[i]``` to ```stack```
+4. start loop from ```0``` till ```length of array1```
+   1. check if ```array1[i] in hash_map``` if yes then ```array1[i] = hash_map[array1[i]]``` else ```array1[i] = -1```
+5. return ```array1```
+
+#### Code
+```
+def next_greater_element(nums1, nums2):
+    stack = []
+    hash_map = {}
+    for i in range(len(nums2)):
+        while stack and nums2[i] > stack[-1]:
+            hash_map[stack.pop()] = nums2[i]
+        stack.append(nums2[i])
+    for i in range(len(nums1)):
+        if nums1[i] in hash_map:
+            nums1[i] = hash_map[nums1[i]]
+        else:
+            nums1[i] = -1
+    return nums1
+```
+
+#### Time Complexity
+    O(n) where n is length of array
+#### Space Complexity
+    O(n) where n is length of array for stack and hash_map
 
 
 ## Linked-List
