@@ -164,7 +164,7 @@ Top Problems must be revised before interview
   3. return -1 index  ***it means element is not present in array***  
   
   ##### Code
-  ```
+  ```python
     def binary_search(nums, target):
 	    low = 0
 	    high = len(nums) - 1
@@ -190,7 +190,7 @@ Top Problems must be revised before interview
   4. [true] **HURRAH!** (we found the element in array) return mid
   5. [False] check if nums[mid] smaller to target
   ##### Code
-  ```
+  ```python
     def binary_search_rec(nums,target,low, high):
         if low>=high:
             return -1
@@ -253,7 +253,7 @@ n = 2
  7. return nums
 
 #### Code
-```    
+```python 
 def rotate_array(nums, n):
 	def reverse_array(nums, s,e):
 		while(s<e):
@@ -311,7 +311,7 @@ key = 20
  4. return -1
 
 #### Code
-```
+```python
 def binary_search_rotated(nums, target):
     low = 0
     high = len(nums)-1
@@ -358,7 +358,7 @@ Output: 6
         4. else increment k
     3. return -1
 #### Code
-```
+```python
 def find_least_common_number(a, b, c):
     i = 0
     j = 0
@@ -413,7 +413,7 @@ Output: 2, 9
 5. else ```return -1```
 
 #### Code
-```
+```python
 def find_low_index(arr, key):
     low = 0
     high = len(arr) - 1
@@ -469,7 +469,7 @@ Output: [0,0,0,1,10,20,59,63,88]
 3. start loop from ```write_index``` till ```0``` and set ```array[i] = 0```
 
 #### Code
-```
+```python
 def move_zeros_to_left(nums):
   i = len(nums) - 1
   j = i
@@ -509,7 +509,7 @@ Output: 5
 4. ```return global_sell - global_profit, global_sell```
 
 #### Code
-```
+```python
 def find_buy_sell_stock_prices(array):
     if array == None or len(array) < 2:
         return None
@@ -552,7 +552,7 @@ Output: [(1, 8), (10, 15)]
 3. ```return merged```
 
 #### Code
-```
+```python
 def merge_intervals(v):
   result = [v[0]]
   j = 1
@@ -592,7 +592,7 @@ Output: [0, 2] or [1, 4]
 3. ```return False```
 
 #### Code
-```
+```python
 def find_sum_of_two(A, val):
   hash_map = {}
   for i in range(len(A)):
@@ -627,7 +627,7 @@ Output: [0,1,9,16,100]
 4. ```return result[::-1]``` to reverse the array
 
 #### Code
-```
+```python
 def sortedSquares(nums):
   result = []
   left = 0
@@ -667,7 +667,7 @@ Output: 49
 4. ```return max_area```
 
 #### Code
-```
+```python
 def max_water_area_container(height):
     i = 0
     j = len(height)-1
@@ -725,7 +725,7 @@ Output: [1, 2, 3, 5, 7, 8]
 
 
 #### Code
-```
+```python
 def partition(nums, low, high):
     pivot_value = nums[low]
     i = low
@@ -779,7 +779,7 @@ Output: [0,0,1,1,2,2]
 3. ```return array```
 
 #### Code
-```
+```python
 def sort_colors(nums):
     low = 0
     mid = 0
@@ -820,7 +820,7 @@ Output: 9534330
 3. ```return ''.join(array)```
 
 #### Code
-```
+```python
 class LargerNumKey(str):
   def __lt__(x,y):
     return x+y > y+x
@@ -860,7 +860,7 @@ Output: 3
 4. ```return len(array)+1```
 
 #### Code
-```
+```python
 def first_missing_positive(nums):
     i = 0
     while i < len(nums):
@@ -906,7 +906,7 @@ Output: 2
 
 
 #### Code
-```
+```python
 def min_sub_array_len(target, nums):
 	left = 0
 	sum1 = 0
@@ -956,7 +956,7 @@ Given an array, find the next greater element G[i] for every element A[i] in the
 5. return ```array1```
 
 #### Code
-```
+```python
 def next_greater_element(nums1, nums2):
     stack = []
     hash_map = {}
@@ -1002,7 +1002,7 @@ Output: [120, 60, 40, 30, 24]
 7. return ```result```
 
 #### Code
-```
+```python
 def product_except_self(nums):
     result = [1] * len(nums)
     left = [1] * len(nums)
