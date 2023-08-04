@@ -22,3 +22,11 @@ class LinkedListNode:
             list.append(current_node.value)
             current_node = current_node.next
         return list
+
+    def __len__(self):
+        current_node = self
+        length = 1
+        while current_node.next:
+            length += 1
+            current_node = current_node.next
+        return length
