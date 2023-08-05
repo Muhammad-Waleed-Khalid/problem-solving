@@ -153,6 +153,105 @@ Top Problems must be revised before interview
     - [Example](#example-18)
     - [Solution](#solution-18)
     - [Code](#code-20)
+    - [Time Complexity](#time-complexity-20)
+    - [Space Complexity](#space-complexity-20)
+  - [Delete All Occurrences of a Given Key in a Linked List](#delete-all-occurrences-of-a-given-key-in-a-linked-list)
+    - [Problem Statement](#problem-statement-20)
+    - [Example](#example-19)
+    - [Solution](#solution-19)
+    - [Code](#code-21)
+    - [Time Complexity](#time-complexity-21)
+    - [Space Complexity](#space-complexity-21)
+  - [Insertion Sort on Linked List](#insertion-sort-on-linked-list)
+    - [Problem Statement](#problem-statement-21)
+    - [Example](#example-20)
+    - [Solution](#solution-20)
+      - [sorted\_insert (head,node)](#sorted_insert-headnode)
+      - [insertion\_sort(head)](#insertion_sorthead)
+    - [Code](#code-22)
+    - [Time Complexity](#time-complexity-22)
+    - [Space Complexity](#space-complexity-22)
+  - [Intersection of Linked Lists](#intersection-of-linked-lists)
+    - [Problem Statement](#problem-statement-22)
+    - [Solution WithOut Using Extra Space](#solution-without-using-extra-space)
+    - [Code WithOut Using Extra Space](#code-without-using-extra-space)
+    - [Time Complexity](#time-complexity-23)
+    - [Space Complexity](#space-complexity-23)
+    - [Solution With Extra Space](#solution-with-extra-space)
+    - [Code With Extra Space](#code-with-extra-space)
+    - [Time Complexity](#time-complexity-24)
+    - [Space Complexity](#space-complexity-24)
+  - [Nth Node from End of Linked List](#nth-node-from-end-of-linked-list)
+    - [Problem Statement](#problem-statement-23)
+    - [Example](#example-21)
+    - [Solution](#solution-21)
+    - [Code](#code-23)
+    - [Time Complexity](#time-complexity-25)
+    - [Space Complexity](#space-complexity-25)
+  - [Swap Nth Node with Head](#swap-nth-node-with-head)
+    - [Problem Statement](#problem-statement-24)
+    - [Example](#example-22)
+    - [Solution](#solution-22)
+    - [Code](#code-24)
+    - [Time Complexity](#time-complexity-26)
+    - [Space Complexity](#space-complexity-26)
+  - [Merge Two Sorted Linked Lists](#merge-two-sorted-linked-lists)
+    - [Problem Statement](#problem-statement-25)
+    - [Example](#example-23)
+    - [Solution](#solution-23)
+    - [Code](#code-25)
+    - [Time Complexity](#time-complexity-27)
+    - [Space Complexity](#space-complexity-27)
+  - [Merge Sort on Linked List](#merge-sort-on-linked-list)
+    - [Problem Statement](#problem-statement-26)
+    - [Example](#example-24)
+    - [Solution](#solution-24)
+      - [get\_middle(head)](#get_middlehead)
+      - [merge\_sort(head)](#merge_sorthead)
+    - [Code](#code-26)
+    - [Time Complexity](#time-complexity-28)
+    - [Space Complexity](#space-complexity-28)
+  - [Reverse Even Nodes In A Linked List](#reverse-even-nodes-in-a-linked-list)
+    - [Problem Statement](#problem-statement-27)
+    - [Example](#example-25)
+    - [Solution](#solution-25)
+      - [odd\_and\_even\_nodes(head)](#odd_and_even_nodeshead)
+      - [merge\_alternate(odd, even)](#merge_alternateodd-even)
+      - [reverse\_even\_nodes(head)](#reverse_even_nodeshead)
+    - [Code](#code-27)
+    - [Time Complexity](#time-complexity-29)
+    - [Space Complexity](#space-complexity-29)
+  - [Rotate List](#rotate-list)
+    - [Problem Statement](#problem-statement-28)
+    - [Example](#example-26)
+    - [Solution](#solution-26)
+    - [Code](#code-28)
+    - [Time Complexity](#time-complexity-30)
+    - [Space Complexity](#space-complexity-30)
+  - [Reorder List](#reorder-list)
+    - [Problem Statement](#problem-statement-29)
+    - [Example](#example-27)
+    - [Solution](#solution-27)
+      - [halves(head)](#halveshead)
+      - [merge\_alternate(head1, head2)](#merge_alternatehead1-head2)
+      - [reorder\_list(head)](#reorder_listhead)
+    - [Code](#code-29)
+    - [Time Complexity](#time-complexity-31)
+    - [Space Complexity](#space-complexity-31)
+  - [Add Two Integers Represented as Linked Lists](#add-two-integers-represented-as-linked-lists)
+    - [Problem Statement](#problem-statement-30)
+    - [Example](#example-28)
+    - [Solution](#solution-28)
+    - [Code](#code-30)
+    - [Time Complexity](#time-complexity-32)
+    - [Space Complexity](#space-complexity-32)
+  - [Deep Copy](#deep-copy)
+    - [Problem Statement](#problem-statement-31)
+    - [Example](#example-29)
+    - [Solution](#solution-29)
+    - [Code](#code-31)
+    - [Time Complexity](#time-complexity-33)
+    - [Space Complexity](#space-complexity-33)
 - [Math-\&-Stats](#math--stats)
 - [Strings](#strings)
 - [Trees](#trees)
@@ -1275,8 +1374,687 @@ def removeDuplicates(head):
         else:
             hashset.add(curr.next.data)
             curr = curr.next
+    return head0
+```
+
+```cpp
+Node* removeDuplicates(Node* head){
+    if (head == NULL || head->next == NULL)
+        return head;
+    
+    Node *curr = head;
+    unordered_set<int> hashset;
+    hashset.insert(curr->data);
+    while(curr->next != NULL){
+        if (hashset.find(curr->next->data) != hashset.end()){
+            curr->next = curr->next->next;
+        }
+        else{
+            hashset.insert(curr->next->data);
+            curr = curr->next;
+        }
+    }
+    return head;
+}
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(n) used for hashset
+
+### Delete All Occurrences of a Given Key in a Linked List
+
+#### Problem Statement
+Given a singly linked list, delete all occurrences of a given key in it. **Linked List can be unSorted**
+
+#### Example
+```
+Input: 1->2->3->3->2->1->NULL, key = 2
+Output: 1->3->3->1->NULL
+```
+
+#### Solution
+
+1. if  ```head == NULL``` return ```NULL```
+2. initialize ```curr = head```, ```prev = NULL```
+3. while ```curr != NULL```
+    1. if ```curr.data == key```
+        1. if ```prev == NULL``` then ```head = curr.next``` and ```curr = head```
+        2. else ```prev.next = curr.next``` and ```curr = curr.next```
+    2. else ```prev = curr``` and ```curr = curr.next```
+4. return ```head```
+
+#### Code
+    
+```python
+def deleteAllOccurences(head, key):
+    if head is None:
+        return None
+    curr = head
+    prev = None
+    while curr is not None:
+        if curr.value == key:
+            if prev is None:
+                head = curr.next
+                curr = head
+            else:
+                prev.next = curr.next
+                curr = curr.next
+        else:
+            prev = curr
+            curr = curr.next
     return head
 ```
+
+```cpp
+Node* deleteAllOccurences(Node * Head, int key){
+    if (Head == NULL)
+        return;
+    Node *curr = Head;
+    Node *prev = NULL;
+    while(curr != NULL){
+        if (curr->data == key){
+            if (prev == NULL){
+                Head = curr->next;
+                curr = Head;
+            }
+            else{
+                prev->next = curr->next;
+                curr = curr->next;
+            }
+        }
+        else{
+            prev = curr;
+            curr = curr->next;
+        }
+    }
+    return Head;
+}
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Insertion Sort on Linked List
+
+#### Problem Statement
+Given a linked list, sort it using insertion sort.
+
+#### Example
+```
+Input: 1->3->2->4->5->1->NULL
+Output: 1->1->2->3->4->5->NULL
+```
+
+#### Solution
+
+##### sorted_insert (head,node)
+1. if ```node == NULL``` return ```head```
+2. if ```head == NULL``` or ```node.value <= head.value``` then ```node.next = head``` and return ```node```
+3. initialize ```curr = head```
+4. while ```curr.next != NULL``` and ```curr.next.value < node.value``` then 
+   1. ```curr = curr.next```
+5. ```node.next = curr.next``` and ```curr.next = node```
+6. return ```head```
+
+##### insertion_sort(head)
+1. if ```head == NULL``` return ```NULL```
+2. initialize ```sorted_list = NULL```, ```curr = head```
+3. while ```curr != NULL```
+    1. initialize ```temp = curr.next```
+    2. ```sorted_list = sorted_insert(sorted_list, curr)```
+    3. ```curr = temp```
+4. return ```sorted_list```
+   
+#### Code
+
+```python
+def sorted_insert(head, node):
+    if node is None:
+        return head
+    if head is None or node.value <= head.value:
+        node.next = head
+        return node
+    curr = head
+    while curr.next is not None and curr.next.value < node.value:
+        curr = curr.next
+    node.next = curr.next
+    curr.next = node
+    return head
+
+def insertion_sort(head):
+    if head is None:
+        return None
+    sorted_list = None
+    curr = head
+    while curr is not None:
+        temp = curr.next
+        sorted_list = sorted_insert(sorted_list, curr)
+        curr = temp
+    return sorted_list
+```
+
+#### Time Complexity
+    O(n^2) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Intersection of Linked Lists
+
+#### Problem Statement
+
+Given two singly linked lists of size N and M, write a program to get the point where two linked lists intersect each other.
+
+#### Solution WithOut Using Extra Space
+
+1. initialize ```l1 = length(head1)```, ```l2 = length(head2)```
+2. if ```l1 > l2``` then ```return intersect(head2, head1)```
+3. initialize ```diff = l2 - l1```, ```curr1 = head1```, ```curr2 = head2```
+4. for ```i = 0``` to ```diff``` do ```curr2 = curr2.next```
+5. while ```curr1 != NULL``` and ```curr2 != NULL``` do
+    1. if ```curr1 == curr2``` then ```return curr1```
+    2. ```curr1 = curr1.next```, ```curr2 = curr2.next```
+6. return ```NULL```
+
+#### Code WithOut Using Extra Space
+```python
+def intersect(head1, head2):
+    l1 = length(head1)
+    l2 = length(head2)
+    if l1 > l2:
+        return intersect(head2, head1)
+    diff = l2 - l1
+    curr1 = head1
+    curr2 = head2
+    for i in range(diff):
+        curr2 = curr2.next
+    while curr1 is not None and curr2 is not None:
+        if curr1 == curr2:
+            return curr1
+        curr1 = curr1.next
+        curr2 = curr2.next
+    return None
+```
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+#### Solution With Extra Space
+
+1. initialize ```hash_set = set()```, ```curr = head1```
+2. while ```curr != NULL``` do ```hash_set.add(curr)```, ```curr = curr.next```
+3. initialize ```curr = head2```
+4. while ```curr != NULL``` and ```curr not in hash_set``` do ```curr = curr.next```
+5. return ```curr```
+#### Code With Extra Space
+```python
+def intersect_using_extra_space(head1,head2):
+    hash_set = set()
+    curr = head1
+    while curr is not None:
+        hash_set.add(curr)
+        curr = curr.next
+    curr = head2
+    while curr is not None and curr not in hash_set:
+        curr = curr.next
+    return curr
+```
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(n) used for hashset
+
+### Nth Node from End of Linked List
+
+#### Problem Statement
+Given a linked list consisting of L nodes and given a number N. The task is to find the Nth node from the end of the linked list.
+
+#### Example
+```
+Input: 1->2->3->4->5, N = 2
+Output: 4
+```
+
+#### Solution
+1. initialize ```ptr = head```
+2. while ```n > 0``` and ```ptr != NULL``` do ```ptr = ptr.next```, ```n -= 1```
+3. if ```ptr == NULL``` and ```n > 0``` then ```return NULL```
+4. while ```ptr != NULL``` do ```ptr = ptr.next```, ```head = head.next```
+5. return ```head```
+
+
+#### Code
+    
+```python
+def find_nth_from_end(head,n):
+    ptr = head
+    while n>0 and ptr is not None:
+        ptr = ptr.next
+        n-=1
+    if ptr is None and n>0:
+        return None
+    while ptr is not None:
+        ptr = ptr.next
+        head = head.next
+    return head
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Swap Nth Node with Head
+
+#### Problem Statement
+Given a singly Linked List, write a function to swap the Nth node from the beginning with head
+
+#### Example
+```
+Input: 1->2->3->4->5, N = 4
+Output: 4->2->3->1->5
+```
+
+#### Solution
+1. initialize ```prev = head```, ```curr = head```
+2. while ```n > 0``` and ```curr.next != NULL``` do ```prev = curr```, ```curr = curr.next```, ```n -= 1```
+3. if ```n == 0``` and ```prev != NULL``` then ```swap(prev, head)```
+4. return ```head```
+
+#### Code
+```python
+def swap_nth_node(head, n):
+    prev = head
+    curr = head
+    while n>0 and curr.next is not None:
+        prev = curr
+        curr = curr.next
+        n-=1
+    if n==0 and prev is not None:   
+        head.value, prev.value = prev.value, head.value
+    return head
+```
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Merge Two Sorted Linked Lists
+
+#### Problem Statement
+Given two sorted linked lists consisting of N and M nodes respectively. The task is to merge both of the list (in-place) and return head of the merged list.
+
+#### Example
+```
+Input: 1->3->5->7->9, 2->4->6->8
+Output: 1->2->3->4->5->6->7->8->9
+```
+
+#### Solution
+1. if ```head1 == NULL``` then ```return head2```
+2. if ```head2 == NULL``` then ```return head1```
+3. if ```head1.value < head2.value``` then ```head1.next = merge_sorted(head1.next, head2)```, ```return head1```
+4. else ```head2.next = merge_sorted(head1, head2.next)```, ```return head2```
+
+
+#### Code
+```python
+def merge_sorted(head1, head2):
+    if head1 is None:
+        return head2
+    if head2 is None:
+        return head1
+    if head1.value < head2.value:
+        head1.next = merge_sorted(head1.next, head2)
+        return head1
+    else:
+        head2.next = merge_sorted(head1, head2.next)
+        return head2
+```
+
+#### Time Complexity
+    O(n+m) where n and m are length of linked lists
+#### Space Complexity
+    O(1) no extra space is used
+
+### Merge Sort on Linked List
+
+#### Problem Statement
+Given Pointer/Reference to the head of a doubly linked list of N nodes, the task is to Sort the given doubly linked list using Merge Sort in both non-decreasing and non-increasing order.
+
+#### Example
+```
+Input: 8->4->2->5
+Output: 2->4->5->8
+```
+#### Solution
+##### get_middle(head)
+1. check if ```head == NULL``` then ```return head```
+2. initialize ```slow = head```, ```fast = head```
+3. while ```fast.next != NULL``` and ```fast.next.next != NULL``` do ```slow = slow.next```, ```fast = fast.next.next```
+4. return ```slow```
+
+##### merge_sort(head)
+1. check if ```head == NULL``` or ```head.next == NULL``` then ```return head```
+2. initialize ```mid = get_mid(head)```, ```next_to_mid = mid.next```, ```mid.next = NULL```
+3. initialize ```left = merge_sort(head)```, ```right = merge_sort(next_to_mid)```
+4. initialize ```sorted_list = merge_sorted(left, right)```
+5. return ```sorted_list```
+
+#### Code
+```python
+def get_middle(head):
+    if head is None:
+        return head
+    slow = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
+def merge_sort(head):
+    if head is None or head.next is None:
+        return head
+    mid = get_mid(head)
+    next_to_mid = mid.next
+    mid.next = None
+    left = merge_sort(head)
+    right = merge_sort(next_to_mid)
+    sorted_list = merge_sorted(left, right)
+    return sorted_list
+```
+
+#### Time Complexity
+    O(nlogn) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Reverse Even Nodes In A Linked List
+
+#### Problem Statement
+Given a singly linked list, reverse nodes at even indices (starting at 1).
+#### Example
+```
+Input: 1->2->3->4->5->6->NULL
+Output: 1->6->3->4->5->2->NULL
+```
+#### Solution
+##### odd_and_even_nodes(head)
+1. initialize ```curr = head```, ```l_even = NULL```
+2. while ```curr != NULL``` and ```curr.next != NULL``` do ```even = curr.next```, ```curr.next = even.next```, ```even.next = l_even```, ```l_even = even```, ```curr = curr.next```
+3. return ```head```, ```l_even```
+
+##### merge_alternate(odd, even)
+1. if ```odd == NULL``` then ```return even```
+2. if ```even == NULL``` then ```return odd```
+3. initialize ```head = odd```
+4. while ```odd.next != NULL``` do ```temp = odd.next```, ```odd.next = even```, ```even = even.next```, ```odd.next.next = temp```, ```odd = temp```
+5. ```odd.next = even```
+6. return ```head```
+
+##### reverse_even_nodes(head)
+1. initialize ```odd,even = odd_and_even_nodes(head)```
+2. return ```merge_alternate(odd, even)```
+
+#### Code
+```python
+def odd_and_even_nodes(head):
+    curr = head
+    l_even = None
+    while curr and curr.next:
+        even = curr.next
+        curr.next = even.next
+        even.next = l_even
+        l_even = even
+        curr = curr.next
+    return head, l_even
+
+def merge_alternate(odd, even):
+    if not odd:
+        return even
+    if not even:
+        return odd
+    head = odd
+    while odd.next:
+        temp = odd.next
+        odd.next = even
+        even = even.next
+        odd.next.next = temp
+        odd = temp
+    odd.next = even
+    return head
+
+def reverse_even_nodes(head):
+    odd,even = odd_and_even_nodes(head)
+    return merge_alternate(odd, even)
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Rotate List
+#### Problem Statement
+Given a singly linked list, rotate the linked list counter-clockwise by k nodes. Where k is a given positive integer. For example, if the given linked list is 10->20->30->40->50->60 and k is 4, the list should be modified to 50->60->10->20->30->40. Assume that k is smaller than the count of nodes in linked list.
+
+#### Example
+```
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 3->4->5->1->2->NULL
+```
+
+#### Solution
+1. initialize ```n = n % len(head)```
+2. if ```n == 0``` or ```head == NULL``` then ```return head```
+3. initialize ```curr = head```
+4. for ```i in range(n-1)``` do ```curr = curr.next```
+5. initialize ```new_head = curr.next```
+6. ```curr.next = NULL```
+7. ```curr = new_head```
+8. while ```curr.next != NULL``` do ```curr = curr.next```
+9. ```curr.next = head```
+10. return ```new_head```
+
+
+
+####  Code
+```python
+def rotate_list(head,n):
+    n = n % len(head)
+    if n == 0 or not head:
+        return head
+    curr = head
+    for i in range(n-1):
+        curr = curr.next
+    new_head = curr.next
+    curr.next = None
+    curr = new_head
+    while curr.next:
+        curr = curr.next
+    curr.next = head
+    return new_head
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Reorder List
+#### Problem Statement
+Given a singly linked list L: L0→L1→…→Ln-1→Ln, reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→… You must do this in-place without altering the nodes' values. For example, Given {1,2,3,4}, reorder it to {1,4,2,3}.
+
+#### Example
+```
+Input: 1->2->3->4->NULL
+Output: 1->4->2->3->NULL
+```
+
+#### Solution
+##### halves(head)
+1. if ```head == NULL``` then ```return NULL, NULL```
+2. initialize ```slow = head```, ```fast = head.next```
+3. while ```fast != NULL``` and ```fast.next != NULL``` do ```slow = slow.next```, ```fast = fast.next.next```
+4. initialize ```head2 = slow.next```
+5. ```slow.next = NULL```
+6. initialize ```rev_head2 = NULL```
+7. while ```head2 != NULL``` do ```temp = head2.next```, ```head2.next = rev_head2```, ```rev_head2 = head2```, ```head2 = temp```
+8. ```head2 = rev_head2```
+9. return ```head```, ```head2```
+
+##### merge_alternate(head1, head2)
+Explained Above in Odd and Even Nodes Problem [Link](#merge_alternateodd-even)
+
+##### reorder_list(head)
+1. initialize ```head1, head2 = halves(head)```
+2. return ```merge_alternate(head1, head2)```
+
+#### Code
+```python
+def halves(head):
+    if not head:
+        return None, None
+    slow = head
+    fast = head.next
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    head2 = slow.next
+    slow.next = None
+    rev_head2 = None
+    while head2:
+        temp = head2.next
+        head2.next = rev_head2
+        rev_head2 = head2
+        head2 = temp
+    head2 = rev_head2
+    return head, head2
+
+def merge_alternate(head1, head2):
+    if not head1:
+        return head2
+    if not head2:
+        return head1
+    head = head1
+    while head1.next:
+        temp = head1.next
+        head1.next = head2
+        head2 = head2.next
+        head1.next.next = temp
+        head1 = temp
+    head1.next = head2
+    return head
+
+def reorder_list(head):
+    head1, head2 = halves(head)
+    return merge_alternate(head1, head2)
+```
+
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+### Add Two Integers Represented as Linked Lists
+#### Problem Statement
+Given two numbers represented by two lists, write a function that returns sum list. The sum list is list representation of addition of two input numbers. Suppose the digits are stored in forward order. In that case, repeat the above problem. Given two numbers represented by two lists, write a function that returns sum list. The sum list is list representation of addition of two input numbers.
+
+#### Example
+```
+Input:
+  First List: 5->6->3  // represents number 365
+  Second List: 8->4->2 //  represents number 248
+Output:
+    Resultant list: 3->1->6  // represents number 613
+```
+
+#### Solution
+1. initialize ```carry = 0```
+2. initialize ```head = None```
+3. while ```int1 != NULL``` or ```int2 != NULL``` or ```carry != 0``` do
+    1. initialize ```sum = carry```
+    2. if ```int1 != NULL``` then ```sum += int1.value```, ```int1 = int1.next```
+    3. if ```int2 != NULL``` then ```sum += int2.value```, ```int2 = int2.next```
+    4. initialize ```digit = sum % 10```
+    5. ```carry = sum // 10```
+    6. if ```head == NULL``` then ```head = LinkedListNode(digit)```, ```tail = head```
+    7. else ```tail.next = LinkedListNode(digit)```, ```tail = tail.next```
+4. return ```head```
+#### Code
+```python
+def add_integers(int1,int2):
+    carry = 0
+    head = None
+    while int1 or int2 or carry:
+        sum = carry
+        if int1:
+            sum += int1.value
+            int1 = int1.next
+        if int2:
+            sum += int2.value
+            int2 = int2.next
+        digit = sum % 10
+        carry = sum // 10
+        if not head:
+            head = LinkedListNode(digit)
+            tail = head
+        else:
+            tail.next = LinkedListNode(digit)
+            tail = tail.next
+    return head
+```
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(1) no extra space is used
+
+
+### Deep Copy
+
+#### Problem Statement
+Given a linked list. We have to copy the given linked list such that change in one copy will not reflect in other.
+
+#### Example
+```
+Input : 1->2->3->4->5
+Output : 1`->2`->3`->4`->5`
+
+```
+
+#### Solution
+1. initialize ```deep_head = None```, ```deep_tail = None```, ```curr = head```
+2. while ```curr != NULL``` do
+    1. if ```deep_head == NULL``` then ```deep_head = LinkedListNode(curr.value)```, ```deep_tail = deep_head```
+    2. else ```deep_tail.next = LinkedListNode(curr.value)```, ```deep_tail = deep_tail.next```
+    3. ```curr = curr.next```
+3. return ```deep_head```
+
+#### Code
+```python
+def deep_copy_list(head):
+    deep_head = None
+    deep_tail = None
+    curr = head
+    while curr:
+        if not deep_head:
+            deep_head = LinkedListNode(curr.value)
+            deep_tail = deep_head
+        else:
+            deep_tail.next = LinkedListNode(curr.value)
+            deep_tail = deep_tail.next
+        curr = curr.next
+    return deep_head
+```
+#### Time Complexity
+    O(n) where n is length of linked list
+#### Space Complexity
+    O(n) where n is length of linked list for new Linked List.
 
 ## Math-&-Stats
 ## Strings
